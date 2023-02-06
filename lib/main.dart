@@ -14,20 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return GetMaterialApp(
       initialBinding: GlobalBindings(),
       debugShowCheckedModeBanner: false,
       title: "Camera Application",
       home: const CameraScreen(),
-    );
-
-    return MaterialApp(
-      title: 'Camera',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const CameraViewer(),
     );
   }
 }
