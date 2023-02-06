@@ -53,14 +53,44 @@ class ScanController extends GetxController {
     super.onInit();
   }
 
-  void capture() {
-    if (_cameraImage != null) {
-      img.Image image = img.Image.fromBytes(_cameraImage!.width,
-          _cameraImage!.height, _cameraImage!.planes[0].bytes,
-          format: img.Format.bgra);
-      Uint8List list = Uint8List.fromList(img.encodeJpg(image));
-      _imageList.add(list);
-      _imageList.refresh();
-    }
-  }
+  // img.Image _convertBGRA8888(CameraImage image) {
+  //   return img.Image.fromBytes(
+  //     image.width,
+  //     image.height,
+  //     image.planes[0].bytes,
+  //     format: img.Format.bgra,
+  //   );
+  // }
+
+  // void capture() {
+
+  //   if (_cameraImage != null) {
+  //     img = _convertBGRA8888(image);
+  //     img.Image image = img.Image.fromBytes(_cameraImage!.width,
+  //         _cameraImage!.height, _cameraImage!.planes[0].bytes,
+  //         format: img.Format.bgra);
+  //     Uint8List list = Uint8List.fromList(img.encodeJpg(image));
+  //     _imageList.add(list);
+  //     _imageList.refresh();
+  //   }
+  // }
+  ///}
+
+  // void capture() {
+  //   try {
+  //     img.Image _img;
+
+  //     if (_cameraImage != null) {
+  //       _img = _convertBGRA8888(_cameraImage!);
+  //       img.PngEncoder pngEncoder = img.PngEncoder();
+  //       // Convert to png
+  //       List<int> png = pngEncoder.encodeImage(_img);
+  //       //return png;
+  //     }
+  //   } catch (e) {
+  //     print(">>>>>>>>>>>> ERROR:" + e.toString());
+  //   }
+  //   return null;
+  // }
+
 }
