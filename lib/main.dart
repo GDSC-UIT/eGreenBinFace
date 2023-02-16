@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/camera_screen.dart';
-import 'package:flutter_camera/camera_viewer.dart';
-import 'package:flutter_camera/global_bindings.dart';
+import 'package:flutter_camera/pages/camera_screen.dart';
+import 'package:flutter_camera/widgets/camera_viewer.dart';
+import 'package:flutter_camera/controller/global_bindings.dart';
 import 'package:get/get.dart';
 
 void main() {
