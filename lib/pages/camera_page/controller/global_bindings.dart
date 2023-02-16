@@ -1,4 +1,4 @@
-import 'package:flutter_camera/scan_controller.dart';
+import 'package:flutter_camera/pages/camera_page/controller/scan_controller.dart';
 import 'package:get/get.dart';
 
 class GlobalBindings extends Bindings {

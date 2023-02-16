@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/pages/camera_screen.dart';
+import 'package:flutter_camera/pages/camera_page/camera_page.dart';
+import 'package:flutter_camera/pages/waiting_page/waiting_page.dart';
 import 'package:flutter_camera/widgets/camera_viewer.dart';
-import 'package:flutter_camera/controller/global_bindings.dart';
+import 'package:flutter_camera/pages/camera_page/controller/global_bindings.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialBinding: GlobalBindings(),
       debugShowCheckedModeBanner: false,
       title: "Camera Application",
-      home: const CameraScreen(),
+      home: const WaitingPage(),
     );
   }
 }
