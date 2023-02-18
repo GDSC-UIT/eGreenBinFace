@@ -15,9 +15,10 @@ class CaptureButton extends GetView<ScanController> {
           width: 100,
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.transparent,
-              border: Border.all(color: Colors.white, width: 5)),
+            shape: BoxShape.circle,
+            color: Colors.transparent,
+            border: Border.all(color: Colors.white, width: 5),
+          ),
           child: Container(
             decoration: const BoxDecoration(
               color: Colors.white,
