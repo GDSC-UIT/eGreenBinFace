@@ -31,10 +31,10 @@ class CameraViewer extends GetView<ScanController> {
                     child: Center(
                       child: Stack(
                         children: [
-                          CameraPreview(controller.cameraController),
                           controller.customPaint.value,
+                          CameraPreview(controller.cameraController),
                         ],
-                      ),
+                      )
                     ),
                   ),
                 ),

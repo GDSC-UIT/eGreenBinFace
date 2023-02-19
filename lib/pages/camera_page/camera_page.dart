@@ -8,6 +8,7 @@ import 'package:flutter_camera/widgets/header.dart';
 import 'package:flutter_camera/widgets/popup_Correct.dart';
 import 'package:flutter_camera/widgets/popup_Incorrect.dart';
 import 'package:get/get.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class CameraScreen extends StatefulWidget {
   CameraScreen({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class _CameraScreenState extends State<CameraScreen> {
   void dispose() {
     super.dispose();
   }
+
+  AudioPlayer audioPlayer = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -93,14 +96,18 @@ class _CameraScreenState extends State<CameraScreen> {
                       children: [
                         AppButton(
                           text: "ORGANIC",
-                          onPressed: () {
+                          onPressed: () async {
+                            await audioPlayer
+                                .play(AssetSource('audios/correct.mp3'));
                             Get.dialog(const PopupCorrect());
                           },
                           color: AppColors.subPrimary,
                         ),
                         AppButton(
                           text: "INOGANIC",
-                          onPressed: () {
+                          onPressed: () async {
+                            await audioPlayer
+                                .play(AssetSource('audios/incorrect.mp3'));
                             Get.dialog(const PopupInCorrect());
                           },
                           color: AppColors.primary,

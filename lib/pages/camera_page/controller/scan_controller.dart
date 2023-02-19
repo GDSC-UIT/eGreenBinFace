@@ -138,7 +138,7 @@ class ScanController extends GetxController {
           inputImage.inputImageData!.size,
           inputImage.inputImageData!.imageRotation);
       customPaint.value = CustomPaint(painter: painter);
-      print("complete detect face");
+      print("complete detect face ${customPaint.value}");
     } else {
       String text = 'face found ${faces.length}\n\n';
       for (final face in faces) {
