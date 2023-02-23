@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_camera/pages/camera_page/controller/scan_controller.dart';
 import 'package:flutter_camera/util/app_colors.dart';
 import 'package:get/get.dart';
-import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 
 class CameraViewer extends GetView<ScanController> {
   const CameraViewer({
@@ -29,12 +28,7 @@ class CameraViewer extends GetView<ScanController> {
                   child: Transform.scale(
                     scale: controller.cameraController.value.aspectRatio / 0.7,
                     child: Center(
-                      child: Stack(
-                        children: [
-                          controller.customPaint.value,
-                          CameraPreview(controller.cameraController),
-                        ],
-                      )
+                      child: CameraPreview(controller.cameraController),
                     ),
                   ),
                 ),

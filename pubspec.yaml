@@ -40,6 +40,7 @@ dependencies:
   path_provider: ^2.0.12
   google_mlkit_face_detection: ^0.4.0
   audioplayers: ^3.0.1
+  confetti: ^0.7.0
 
 dev_dependencies:
   flutter_test:

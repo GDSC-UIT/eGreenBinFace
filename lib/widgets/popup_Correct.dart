@@ -1,9 +1,40 @@
 import 'package:flutter_camera/util/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_camera/util/image_asset.dart';
+import 'package:confetti/confetti.dart';
+import 'dart:math';
 
-class PopupCorrect extends StatelessWidget {
-  const PopupCorrect({super.key});
+class PopupCorrect extends StatefulWidget {
+  PopupCorrect({super.key});
+
+  @override
+  State<PopupCorrect> createState() => _PopupCorrectState();
+}
+
+class _PopupCorrectState extends State<PopupCorrect> {
+  late ConfettiController _confettiControllerLeft =
+      ConfettiController(duration: const Duration(seconds: 10));
+
+  late ConfettiController _confettiControllerRight =
+      ConfettiController(duration: const Duration(seconds: 10));
+
+  @override
+  void dispose() {
+    _confettiControllerLeft.dispose();
+    _confettiControllerRight.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiControllerLeft =
+        ConfettiController(duration: const Duration(seconds: 10));
+    _confettiControllerRight =
+        ConfettiController(duration: const Duration(seconds: 10));
+    _confettiControllerLeft.play();
+    _confettiControllerRight.play();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +81,34 @@ class PopupCorrect extends StatelessWidget {
               fontFamily: "Ubuntu",
               fontWeight: FontWeight.w700,
               fontSize: 20,
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: ConfettiWidget(
+              confettiController: _confettiControllerLeft,
+              blastDirection: -pi / 3,
+              emissionFrequency: 0.01,
+              numberOfParticles: 10,
+              maximumSize: const Size(20, 10),
+              maxBlastForce: 40,
+              minBlastForce: 30,
+              gravity: 0.1,
+              shouldLoop: true,
+            ),
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: ConfettiWidget(
+              confettiController: _confettiControllerRight,
+              blastDirection: -3 * pi / 4,
+              emissionFrequency: 0.01,
+              numberOfParticles: 10,
+              maximumSize: const Size(20, 10),
+              maxBlastForce: 40,
+              minBlastForce: 30,
+              gravity: 0.1,
+              shouldLoop: true,
             ),
           ),
         ],

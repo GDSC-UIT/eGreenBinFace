@@ -25,6 +25,8 @@ class ScanController extends GetxController {
   // List<File> get imageList1 => _imageList1;
   List<Uint8List> get imageList => _imageList;
 
+  RxBool isGotFace = false.obs;
+
   //create face detector object
   final FaceDetector _faceDetector = FaceDetector(
     options: FaceDetectorOptions(
@@ -36,10 +38,6 @@ class ScanController extends GetxController {
   bool _canProcess = true;
 
   bool _isBusy = false;
-
-  Rx<CustomPaint> customPaint = const CustomPaint().obs;
-
-  String? _text;
 
   int count = 1;
 
@@ -132,20 +130,9 @@ class ScanController extends GetxController {
         inputImage.inputImageData?.imageRotation != null &&
         faces.isNotEmpty) {
       print("have face");
-
-      final painter = FaceDetectorPainter(
-          faces,
-          inputImage.inputImageData!.size,
-          inputImage.inputImageData!.imageRotation);
-      customPaint.value = CustomPaint(painter: painter);
-      print("complete detect face ${customPaint.value}");
+      isGotFace.value = true;
     } else {
-      String text = 'face found ${faces.length}\n\n';
-      for (final face in faces) {
-        text += 'face ${face.boundingBox}\n\n';
-      }
-      _text = text;
-      customPaint.value = const CustomPaint();
+      isGotFace.value = false;
     }
     _isBusy = false;
   }
