@@ -10,4 +10,8 @@ class Assets {
   static const String correctImg = 'assets/images/correct.png';
   static const String wrongImg = 'assets/images/wrong.png';
   static const String bgImg = 'assets/images/bg.png';
+  static const String recycleImg = 'assets/images/recycle.png';
+  static const String nonrecycleImg = 'assets/images/nonrecycle.png';
+  static const String redFaceImg = 'assets/images/redFace.png';
+  static const String greenFaceImg = 'assets/images/greenFace.png';
 }

@@ -26,6 +26,7 @@ class ScanController extends GetxController {
   List<Uint8List> get imageList => _imageList;
 
   RxBool isGotFace = false.obs;
+  bool isTakeImage = false;
 
   //create face detector object
   final FaceDetector _faceDetector = FaceDetector(
@@ -131,6 +132,10 @@ class ScanController extends GetxController {
         faces.isNotEmpty) {
       print("have face");
       isGotFace.value = true;
+      if (!isTakeImage) {
+        capture();
+        isTakeImage = true;
+      }
     } else {
       isGotFace.value = false;
     }
@@ -162,7 +167,10 @@ class ScanController extends GetxController {
     return _img;
   }
 
-//old capture method
+  void resetImage() {
+    imageTake.value = File("");
+    isTakeImage = false;
+  }
 
   void capture() async {
     if (_cameraImage != null) {
@@ -182,10 +190,5 @@ class ScanController extends GetxController {
       file.writeAsBytesSync(list);
       imageTake.value = file;
     }
-    // print("capture image");
-    // XFile captureImg = await _cameraController.takePicture();
-    // _imageList.add(File(captureImg.path));
-    // _imageList.refresh();
-    // print("capture image finish");
   }
 }

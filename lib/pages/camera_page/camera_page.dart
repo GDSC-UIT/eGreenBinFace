@@ -4,7 +4,9 @@ import 'package:flutter_camera/util/image_asset.dart';
 import 'package:flutter_camera/widgets/app_button.dart';
 import 'package:flutter_camera/widgets/camera_viewer.dart';
 import 'package:flutter_camera/widgets/capture_button.dart';
+import 'package:flutter_camera/widgets/got_faceLable.dart';
 import 'package:flutter_camera/widgets/header.dart';
+import 'package:flutter_camera/widgets/non_faceLabel.dart';
 import 'package:flutter_camera/widgets/popup_Correct.dart';
 import 'package:flutter_camera/widgets/popup_Incorrect.dart';
 import 'package:get/get.dart';
@@ -27,121 +29,135 @@ class CameraScreen extends GetView<ScanController> {
         }
         return Scaffold(
           backgroundColor: Colors.white,
-          body: Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(Assets.bgImg),
-                fit: BoxFit.cover,
-              ),
-            ),
+          body: SingleChildScrollView(
             child: Container(
-              margin:
-                  const EdgeInsets.symmetric(vertical: 32.0, horizontal: 20.0),
               decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(32),
+                image: DecorationImage(
+                  image: AssetImage(Assets.bgImg),
+                  fit: BoxFit.cover,
                 ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 3),
-                  ),
-                ],
               ),
-              child: Column(
-                children: [
-                  const Header(),
-                  const SizedBox(
-                    height: 12,
+              child: Container(
+                margin: const EdgeInsets.symmetric(
+                    vertical: 32.0, horizontal: 20.0),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(32),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(Assets.unionImg),
-                      const SizedBox(
-                        width: 24,
-                      ),
-                      Text(
-                        "LET'S CHOOSE",
-                        style: TextStyle(
-                          fontFamily: "GloriaHallelujah",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 23,
-                          color: AppColors.brown,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 24,
-                      ),
-                      Image.asset(Assets.unionImg),
-                    ],
-                  ),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
                     ),
-                    child: Column(
-                      children: [
-                        const CameraViewer(),
-                        const SizedBox(
-                          height: 48,
-                        ),
-                        controller.isGotFace.value == true
-                            ? const Text(
-                                "got face",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.green,
-                                ),
-                              )
-                            : const Text(
-                                "no face",
-                                style: TextStyle(
-                                  fontSize: 24,
-                                  color: Colors.red,
-                                ),
-                              ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            AppButton(
-                              text: "ORGANIC",
-                              onPressed: () async {
-                                await audioPlayer
-                                    .play(AssetSource('audios/correct.mp3'));
-                                Get.dialog(PopupCorrect());
-                              },
-                              color: AppColors.subPrimary,
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    const Header(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 18,
+                          ),
+                          !controller.isGotFace.value
+                              ? const NonFaceLabel()
+                              : const GotFaceLabel(),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          const CameraViewer(),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          const Text(
+                            "Let's guess what kind of trash I am!",
+                            style: TextStyle(
+                              fontFamily: "ubuntu",
+                              fontWeight: FontWeight.w700,
+                              fontSize: 14,
                             ),
-                            AppButton(
-                              text: "INOGANIC",
-                              onPressed: () async {
-                                await audioPlayer
-                                    .play(AssetSource('audios/incorrect.mp3'));
-                                Get.dialog(const PopupInCorrect());
-                              },
-                              color: AppColors.primary,
-                            )
-                          ],
-                        ),
-                      ],
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Column(
+                                children: [
+                                  AppButton(
+                                    onPressed: () async {
+                                      await audioPlayer.play(
+                                          AssetSource('audios/correct.mp3'));
+                                      Get.dialog(PopupCorrect());
+                                    },
+                                    color: AppColors.subPrimary,
+                                    image: Assets.recycleImg,
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Text(
+                                    "RECYCLE",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.subPrimary,
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  AppButton(
+                                    onPressed: () async {
+                                      await audioPlayer.play(
+                                          AssetSource('audios/incorrect.mp3'));
+                                      Get.dialog(const PopupInCorrect());
+                                    },
+                                    color: AppColors.orange,
+                                    image: Assets.nonrecycleImg,
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  Text(
+                                    "NON-RECYCLE",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: AppColors.orange,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                  const Expanded(
-                    child: const SizedBox(),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Image.asset(Assets.binImg),
-                  ),
-
-                  // CaptureButton(),
-                  //TopImageViewer(),
-                ],
+                    if (controller.imageTake.value.path != "")
+                      Transform.rotate(
+                        angle: pi,
+                        child: Image.file(controller.imageTake.value),
+                      ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Image.asset(Assets.binImg),
+                    ),
+                    TextButton(
+                      onPressed: controller.resetImage,
+                      child: Text("reset image"),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

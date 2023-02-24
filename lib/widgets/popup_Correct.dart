@@ -5,7 +5,7 @@ import 'package:confetti/confetti.dart';
 import 'dart:math';
 
 class PopupCorrect extends StatefulWidget {
-  PopupCorrect({super.key});
+  const PopupCorrect({super.key});
 
   @override
   State<PopupCorrect> createState() => _PopupCorrectState();
@@ -22,6 +22,7 @@ class _PopupCorrectState extends State<PopupCorrect> {
   void dispose() {
     _confettiControllerLeft.dispose();
     _confettiControllerRight.dispose();
+
     super.dispose();
   }
 
