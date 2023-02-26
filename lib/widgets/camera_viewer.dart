@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/pages/camera_page/controller/scan_controller.dart';
-import 'package:flutter_camera/util/app_colors.dart';
+import 'package:egreenbin_face/pages/camera_page/controller/scan_controller.dart';
+import 'package:egreenbin_face/util/app_colors.dart';
 import 'package:get/get.dart';
 
 class CameraViewer extends GetView<ScanController> {

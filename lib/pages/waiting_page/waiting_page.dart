@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/util/app_colors.dart';
-import 'package:flutter_camera/util/image_asset.dart';
+import 'package:egreenbin_face/util/app_colors.dart';
+import 'package:egreenbin_face/util/image_asset.dart';
 
 class WaitingPage extends StatelessWidget {
   const WaitingPage({super.key});

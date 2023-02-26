@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_camera/util/app_colors.dart';
-import 'package:flutter_camera/util/image_asset.dart';
+import 'package:egreenbin_face/util/app_colors.dart';
+import 'package:egreenbin_face/util/image_asset.dart';
 
 class NonFaceLabel extends StatelessWidget {
   const NonFaceLabel({super.key});

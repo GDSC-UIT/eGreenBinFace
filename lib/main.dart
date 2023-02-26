@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/pages/camera_page/camera_page.dart';
-import 'package:flutter_camera/pages/waiting_page/waiting_page.dart';
-import 'package:flutter_camera/widgets/camera_viewer.dart';
-import 'package:flutter_camera/pages/camera_page/controller/global_bindings.dart';
+import 'package:egreenbin_face/pages/camera_page/camera_page.dart';
+import 'package:egreenbin_face/pages/camera_page/controller/global_bindings.dart';
 import 'package:get/get.dart';
 
 void main() {

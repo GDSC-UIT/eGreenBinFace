@@ -1,9 +1,7 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_camera/util/face_detector_painter.dart';
 import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
@@ -131,13 +129,14 @@ class ScanController extends GetxController {
         inputImage.inputImageData?.imageRotation != null &&
         faces.isNotEmpty) {
       print("have face");
-      isGotFace.value = true;
+
       if (!isTakeImage) {
-        capture();
-        isTakeImage = true;
+        Future.delayed(const Duration(milliseconds: 1000), () {
+          capture();
+          isTakeImage = true;
+          isGotFace.value = true;
+        });
       }
-    } else {
-      isGotFace.value = false;
     }
     _isBusy = false;
   }
@@ -170,6 +169,7 @@ class ScanController extends GetxController {
   void resetImage() {
     imageTake.value = File("");
     isTakeImage = false;
+    isGotFace.value = false;
   }
 
   void capture() async {

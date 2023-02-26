@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/pages/camera_page/controller/scan_controller.dart';
+import 'package:egreenbin_face/pages/camera_page/controller/scan_controller.dart';
 import 'package:get/get.dart';
 
 class CaptureButton extends GetView<ScanController> {

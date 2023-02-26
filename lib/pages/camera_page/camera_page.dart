@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_camera/util/app_colors.dart';
-import 'package:flutter_camera/util/image_asset.dart';
-import 'package:flutter_camera/widgets/app_button.dart';
-import 'package:flutter_camera/widgets/camera_viewer.dart';
-import 'package:flutter_camera/widgets/capture_button.dart';
-import 'package:flutter_camera/widgets/got_faceLable.dart';
-import 'package:flutter_camera/widgets/header.dart';
-import 'package:flutter_camera/widgets/non_faceLabel.dart';
-import 'package:flutter_camera/widgets/popup_Correct.dart';
-import 'package:flutter_camera/widgets/popup_Incorrect.dart';
+import 'package:egreenbin_face/util/app_colors.dart';
+import 'package:egreenbin_face/util/image_asset.dart';
+import 'package:egreenbin_face/widgets/app_button.dart';
+import 'package:egreenbin_face/widgets/camera_viewer.dart';
+import 'package:egreenbin_face/widgets/capture_button.dart';
+import 'package:egreenbin_face/widgets/got_faceLable.dart';
+import 'package:egreenbin_face/widgets/header.dart';
+import 'package:egreenbin_face/widgets/non_faceLabel.dart';
+import 'package:egreenbin_face/widgets/popup_Correct.dart';
+import 'package:egreenbin_face/widgets/popup_Incorrect.dart';
 import 'package:get/get.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:flutter_camera/pages/camera_page/controller/scan_controller.dart';
+import 'package:egreenbin_face/pages/camera_page/controller/scan_controller.dart';
 import 'package:confetti/confetti.dart';
 import 'dart:math';
 
@@ -145,7 +145,7 @@ class CameraScreen extends GetView<ScanController> {
                     ),
                     if (controller.imageTake.value.path != "")
                       Transform.rotate(
-                        angle: pi,
+                        angle: -pi / 2,
                         child: Image.file(controller.imageTake.value),
                       ),
                     Align(
@@ -154,7 +154,7 @@ class CameraScreen extends GetView<ScanController> {
                     ),
                     TextButton(
                       onPressed: controller.resetImage,
-                      child: Text("reset image"),
+                      child: const Text("reset image"),
                     )
                   ],
                 ),
