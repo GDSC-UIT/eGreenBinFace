@@ -41,13 +41,13 @@ class TopImageViewer extends StatelessWidget {
                     );
                   }),
             ),
-            controller.imageTake.value.path != ""
-                ? SizedBox(
-                    height: 100,
-                    width: Get.width,
-                    child: Image.file(controller.imageTake.value),
-                  )
-                : const SizedBox(),
+            // controller.imageTake.value.path != ""
+            //     ? SizedBox(
+            //         height: 100,
+            //         width: Get.width,
+            //         child: Image.file(controller.imageTake.value),
+            //       )
+            //     : const SizedBox(),
           ],
         ),
       ),

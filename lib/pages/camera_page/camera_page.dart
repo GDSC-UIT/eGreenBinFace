@@ -3,7 +3,6 @@ import 'package:egreenbin_face/util/app_colors.dart';
 import 'package:egreenbin_face/util/image_asset.dart';
 import 'package:egreenbin_face/widgets/app_button.dart';
 import 'package:egreenbin_face/widgets/camera_viewer.dart';
-import 'package:egreenbin_face/widgets/capture_button.dart';
 import 'package:egreenbin_face/widgets/got_faceLable.dart';
 import 'package:egreenbin_face/widgets/header.dart';
 import 'package:egreenbin_face/widgets/non_faceLabel.dart';
@@ -12,7 +11,6 @@ import 'package:egreenbin_face/widgets/popup_Incorrect.dart';
 import 'package:get/get.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:egreenbin_face/pages/camera_page/controller/scan_controller.dart';
-import 'package:confetti/confetti.dart';
 import 'dart:math';
 
 class CameraScreen extends GetView<ScanController> {
@@ -143,11 +141,11 @@ class CameraScreen extends GetView<ScanController> {
                         ],
                       ),
                     ),
-                    if (controller.imageTake.value.path != "")
-                      Transform.rotate(
-                        angle: -pi / 2,
-                        child: Image.file(controller.imageTake.value),
-                      ),
+                    // if (controller.imageTake.value.path != "")
+                    //   Transform.rotate(
+                    //     angle: -pi / 2,
+                    //     child: Image.file(controller.imageTake.value),
+                    //   ),
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Image.asset(Assets.binImg),
