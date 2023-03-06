@@ -7,7 +7,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:camera/camera.dart';
 import 'package:get/get.dart';
 import 'package:image/image.dart' as img;
-import 'dart:math';
 
 class ScanController extends GetxController {
   late List<CameraDescription> _cameras;
@@ -177,13 +176,6 @@ class ScanController extends GetxController {
       print("capture image");
       img.Image image = _convertYUV420(_cameraImage!);
       Uint8List list = Uint8List.fromList(img.encodeJpg(image));
-      _imageList.add(list);
-      //_imageList1.add(File.fromRawPath(list));
-      _imageList.refresh();
-      // _imageList1.refresh();
-
-      //fd
-      var rng = Random();
       Directory tempDir = await getTemporaryDirectory();
       File file = await File('${tempDir.path}/image$count.png').create();
       count++;

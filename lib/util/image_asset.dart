@@ -14,4 +14,7 @@ class Assets {
   static const String nonrecycleImg = 'assets/images/nonrecycle.png';
   static const String redFaceImg = 'assets/images/redFace.png';
   static const String greenFaceImg = 'assets/images/greenFace.png';
+  static const String faceImg = 'assets/images/face-id.png';
+  static const String faceScan = 'assets/icons/face_scan.json';
+  static const String faceScaned = 'assets/icons/face_scanned.json';
 }
